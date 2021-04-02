@@ -10,16 +10,27 @@
                   <th>Descripción</th>
                   <th>Monto</th>
                   <th>Tipo</th>
-                  <th></th>
+                  <th>Acciones</th>
                 </tr>
               </thead>
 
               <tbody>
-                <tr>
-                  <td>Descripción</td>
-                  <td>Monto</td>
-                  <td>Tipo</td>
-                  <td>acciones</td>
+                <tr *ngFor="let item of ingresoEgresoItems$ | async | orderIngresoEgreso">
+                  <td>{{item.descripcion}}</td>
+                  <td>{{item.monto}}</td>
+                  <td>
+                    <span [ngClass]="{
+                      'text-success': item.tipo === 'ingreso', 
+                      'text-primary': item.tipo === 'egreso'
+                    }">
+                      {{item.tipo}}
+                    </span>
+                  </td>
+                  <td>
+                    <button class="btn btn-danger" (click)="eliminarIngresoEgreso(item)">
+                      <i class="fas fa-trash-alt"></i>Borrar
+                    </button>
+                  </td>
                 </tr>
               </tbody>
 

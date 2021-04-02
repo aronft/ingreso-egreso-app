@@ -1,7 +1,8 @@
-import { Action } from '@ngrx/store';
+import { Action, createAction, props } from '@ngrx/store';
 import { User } from './user.model';
 
 export const SET_USER = '[USER] set user'
+export const UNSET_USER = '[USER] unset user'
 
 
 export class setUserAction implements Action {
@@ -11,4 +12,7 @@ export class setUserAction implements Action {
     }
 }
 
-export type acciones = setUserAction
+export class unsetUserAction implements Action {
+    readonly type = UNSET_USER
+}
+export type acciones = setUserAction | unsetUserAction

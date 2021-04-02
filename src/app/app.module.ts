@@ -19,13 +19,15 @@ import { environment } from 'src/environments/environment';
 // modulos
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 
 // NGRX
 import { StoreModule } from '@ngrx/store';
 import { appReducers } from './app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { OrderIngresoEgresoPipe } from './ingreso-egreso/order-ingreso-egreso.pipe';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     NavbarComponent,
     SidebarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    OrderIngresoEgresoPipe,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +55,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
+    ReactiveFormsModule,
+    ChartsModule
     
   ],
   providers: [],
